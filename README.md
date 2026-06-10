@@ -1,59 +1,47 @@
-# 🎓 Sistema de Gestión de Becas Universitarias
-
-Sistema de getión de becas universitarias...
-
-\---
-
-## Requisitos
-
-|Herramienta|Versión|
-|-|-|
-|Python|3.10+|
-|Git|2.0+|
-|Dbeaver|25.0+|
-|MySQL server|9.6+|
-
-\---
-
-Previamente a la instalación deberá configurar MySQL Server
-Esto definira el apartado de settings.py
-
-En este caso deberá ir a settings.py y verificar que su contraseña y puerto este correctos,
-Para luego hacer una conexcion correcta con DBeaver o otra herramienta.
-
-## Instalación
-
-```bash
+```text
 1. Clonar repositorio
-git clone https://github.com/arielemcm/Proyecto-Final---3-Sistema-de-Gesti-n-de-Becas-Universitarias---WEB-III-
+git clone https://github.com
 cd SistemaGestBecasUniv
+```
 
+```text
 2. Crear entorno virtual
 python -m venv env
+```
 
+```text
 3. Activar el entorno virtual
 .\env\Scripts\activate
+```
 
-4. Instalar las bilbiotecas
-- pip install -r requirements.txt
-o pruebe este otro comando
-- python -m pip install -r requirements.txt
-despues ejecute lo siguiente
-- python -m pip install --upgrade pip
+```text
+4. Instalar las bibliotecas
+pip install -r requirements.txt
 
+o pruebe este otro comando si falla:
+python -m pip install -r requirements.txt
+python -m pip install --upgrade pip
+```
+
+```text
 5. Crear base de datos en MySQL
- Entrar a DBeaver y hacer una nieva conexión, con el puerto y contraseña que configuro previamente a instalacion,
+Entrar a DBeaver y hacer una nueva conexión con el puerto y contraseña configurados.
+Crear manualmente la base de datos: becas_db
+(En caso de que aparezca un archivo más que sys, eliminarlo y respectivamente crear: becas_db)
+```
 
-&#x20;crear manualmente el la base de datos: becas\_db, en caso de que aparezca un archivo mas que sys, eliminarlo y respectivamente crear: becas\_db
+```text
 6. Migrar
-- python .\manage.py makemigrations BecasUniv
-- python .\manage.py migrate
+python .\manage.py makemigrations BecasUniv
+python .\manage.py migrate
+```
 
+```text
 7. Crear superusuario
-- python .\manage.py createsuperuser
+python .\manage.py createsuperuser
+```
 
+```text
 8. Ejecutar
-- python .\manage.py runserver
-
-
-
+python .\manage.py runserver
+```
