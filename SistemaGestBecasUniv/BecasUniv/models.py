@@ -5,9 +5,8 @@ from django.db import models
 # TABLA 1: PROGRAMAS DE BECA
 # ============================================
 class ProgramaBeca(models.Model):
-    """Catálogo de programas de becas disponibles"""
-    
-    # Tipos de beca (choices)
+    """Catalogo de programas de becas disponibles"""
+
     TIPOS = [
         ('DOCENCIA', 'Auxiliar Docencia'),
         ('INVESTIGACION', 'Auxiliar Investigación'),

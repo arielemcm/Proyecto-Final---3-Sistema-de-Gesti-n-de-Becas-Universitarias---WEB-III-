@@ -18,7 +18,7 @@ class EstudianteSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
     def get_total_postulaciones(self, obj):
-        """Cuenta cuántas postulaciones tiene el estudiante"""
+        """Cuenta cuasntas postulaciones tiene el estudiante"""
         return obj.postulaciones.count()
 
 class PostulacionSerializer(serializers.ModelSerializer):
