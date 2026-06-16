@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'becas_db',
         'USER': 'root',
-        'PASSWORD': '123456', #o la contraseña que tu pusiste
+        'PASSWORD': '7096810Lp', #o la contraseña que tu pusiste
         'HOST': 'localhost',
         'PORT': '3306' #o el puerto quqe tu pusiste
     }

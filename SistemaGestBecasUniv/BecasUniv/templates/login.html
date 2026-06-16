@@ -4,76 +4,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión | Becas UMSA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>UMSA · Sistema de Becas</title>
+
+    {% load static %}
+
+    <!-- FUENTE RUBIK -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+        :root {
+            --rojo-umsa: #e01017;
+            --azul-umsa: #004767;
+            --azul-1: #003b5c;
+            --azul-2: #005b8c;
+            --blanco: #ffffff;
+            --negro: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+        }
+
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             min-height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg, var(--azul-umsa), var(--azul-1), var(--rojo-umsa));
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        }
+
+        /* PANEL IZQUIERDO */
+        .left {
+            background: linear-gradient(180deg, var(--azul-umsa), var(--azul-1));
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .left .logo-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .left h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .left p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .left .decorative-line {
+            width: 60px;
+            height: 3px;
+            background: var(--rojo-umsa);
+            margin: 15px auto;
+            border-radius: 10px;
+        }
+
+        /* PANEL LOGIN */
+        .right {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
         }
-        .login-card {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .card-title i {
+            background: var(--azul-umsa);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #1f2937;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        input:focus {
+            border-color: var(--azul-umsa);
+            box-shadow: 0 0 0 3px rgba(0,71,103,0.2);
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--azul-umsa), var(--azul-1));
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .error {
+            background: rgba(224,16,23,0.1);
+            border: 1px solid rgba(224,16,23,0.3);
+            color: var(--rojo-umsa);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 20px;
+            }
+
+            .left {
+                padding: 30px;
+            }
+
+            .left .logo-img {
+                width: 80px;
+                height: 80px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="w-full max-w-md px-4">
-        <!-- Logo UMSA -->
-        <div class="text-center mb-8">
-            <div class="text-5xl mb-3">🎓</div>
-            <h1 class="text-2xl font-bold text-white">Becas Universitarias</h1>
-            <p class="text-slate-300 text-sm">Sistema de gestion</p>
-        </div>
-        
-        <!-- Tarjeta de Login -->
-        <div class="login-card p-8">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center text-white text-xl">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <h2 class="text-xl font-bold text-slate-800">Iniciar Sesión</h2>
-            </div>
-            
-            {% if messages %}
-                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-4 text-sm">
-                    {% for message in messages %}
-                        <p><i class="fas fa-exclamation-circle mr-1"></i> {{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            
-            <form method="post" class="space-y-4">
-                {% csrf_token %}
-                <div>
-                    <label class="block text-sm font-medium text-slate-600 mb-1">Usuario</label>
-                    <div class="relative">
-                        <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                        <input type="text" name="username" class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition" placeholder="admin" required>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-600 mb-1">Contraseña</label>
-                    <div class="relative">
-                        <i class="fas fa-key absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                        <input type="password" name="password" class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition" placeholder="••••••••" required>
-                    </div>
-                </div>
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-800 transition shadow-lg">
-                    <i class="fas fa-sign-in-alt mr-2"></i> Ingresar
-                </button>
-            </form>
-            
-            <p class="text-center text-xs text-slate-400 mt-6">
-                Universidad Grupo 2 - WEB III
-            </p>
-        </div>
+
+<div class="container">
+
+    <!-- IZQUIERDA -->
+    <div class="left">
+        <img src="{% static 'img/logo.png' %}" alt="Logo UMSA" class="logo-img">
+        <h1>Sistema de Becas UMSA</h1>
+        <div class="decorative-line"></div>
+        <p>Universidad Mayor de San Andrés<br>Plataforma de gestión académica</p>
     </div>
+
+    <!-- DERECHA -->
+    <div class="right">
+
+        <div class="card-title">
+            <i class="fas fa-lock"></i>
+            <h2>Iniciar Sesión</h2>
+        </div>
+
+        {% if messages %}
+            <div class="error">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div>
+                <label>Usuario</label>
+                <input type="text" name="username" placeholder="Ingresa tu usuario" required>
+            </div>
+
+            <div>
+                <label>Contraseña</label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit">
+                <i class="fas fa-sign-in-alt"></i> Ingresar
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
 </body>
 </html>

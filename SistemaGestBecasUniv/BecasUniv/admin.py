@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import ProgramaBeca, Estudiante, Postulacion
 
+
 @admin.register(ProgramaBeca)
 class ProgramaBecaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'tipo', 'monto', 'activo', 'fecha_creacion']

@@ -1,9 +1,322 @@
-/* Estilos del Sistema de Becas UMSA */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --rojo-umsa: #e01017;
+    --azul-umsa: #004767;
+    --blanco: #ffffff;
+    --negro: #1a1a1a;
+
+    /* Tonos secundarios azul */
+    --azul-1: #003b5c;
+    --azul-2: #005b8c;
+    --azul-3: #006fa6;
+    --azul-4: #0088c7;
+    --azul-5: #e6f0fa;
+    --azul-6: #cce0f5;
+    
+    /* Tonos rojo */
+    --rojo-1: #c10d14;
+    --rojo-2: #f5d6d8;
+    
+    /* Tonos para el panel de control */
+    --panel-bg: #e6f0fa;
+    --panel-hover: #cce0f5;
+}
+
+/* Reset y fuente global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #f4f7fb;
+}
+
+/* Transiciones */
 .transition-all { transition: all 0.2s ease; }
 .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-.card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 22px -10px rgba(0,0,0,0.12); }
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 22px -10px rgba(0,0,0,0.15);
+}
+
+/* Scrollbar institucional */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #eef2f5; border-radius: 10px; }
-::-webkit-scrollbar-thumb { background: #b9c3ce; border-radius: 10px; }
-.modulo-contenido { display: none; }
-.modulo-contenido.block { display: block; }
+::-webkit-scrollbar-track { background: #eef2f5; }
+::-webkit-scrollbar-thumb { background: var(--azul-umsa); border-radius: 10px; }
+
+/* =========================
+   SIDEBAR UMSA - MENÚ BAR BLANCO
+   ========================= */
+
+aside {
+    background: var(--blanco) !important;
+    border-right: 2px solid #e0e6ed;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+}
+
+/* Título del sidebar */
+aside .logo-text,
+aside h1 {
+    color: var(--azul-umsa) !important;
+}
+
+aside p {
+    color: var(--azul-3) !important;
+}
+
+/* Botones del sidebar */
+.nav-btn {
+    color: var(--azul-umsa) !important;
+    background-color: transparent !important;
+    border-radius: 10px;
+    margin: 4px 8px;
+    padding: 10px 16px;
+    font-weight: 500;
+}
+
+.nav-btn:hover {
+    background-color: var(--panel-bg) !important;
+    color: var(--azul-1) !important;
+}
+
+.nav-btn.active {
+    background-color: var(--azul-umsa) !important;
+    color: var(--blanco) !important;
+}
+
+/* Iconos del sidebar */
+aside i {
+    color: var(--azul-umsa);
+}
+
+.nav-btn.active i {
+    color: var(--blanco);
+}
+
+/* =========================
+   PANEL DE CONTROL - FONDO AZUL
+   ========================= */
+
+/* Contenedor principal */
+.main-content,
+.panel-container,
+.content-wrapper {
+    background: linear-gradient(135deg, #e6f0fa 0%, #cce0f5 100%);
+    min-height: 100vh;
+}
+
+/* Tarjetas del panel */
+.card {
+    background: var(--blanco);
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 71, 103, 0.08);
+}
+
+.card-header {
+    background: var(--blanco);
+    border-bottom: 2px solid var(--panel-bg);
+    border-radius: 16px 16px 0 0 !important;
+}
+
+/* Tablas */
+.table {
+    background: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: var(--azul-umsa);
+    color: var(--blanco);
+}
+
+.table tbody tr:hover {
+    background-color: var(--panel-bg);
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+
+button, .btn {
+    transition: all 0.2s ease;
+    font-family: 'Rubik', sans-serif;
+}
+
+button:hover {
+    filter: brightness(1.05);
+}
+
+/* Botón rojo UMSA */
+.btn-rojo {
+    background-color: var(--rojo-umsa);
+    color: white;
+    border: none;
+}
+
+.btn-rojo:hover {
+    background-color: var(--rojo-1);
+    color: white;
+}
+
+/* Botón azul UMSA */
+.btn-azul {
+    background-color: var(--azul-umsa);
+    color: white;
+    border: none;
+}
+
+.btn-azul:hover {
+    background-color: var(--azul-1);
+    color: white;
+}
+
+/* Botón blanco con borde */
+.btn-blanco {
+    background-color: var(--blanco);
+    color: var(--azul-umsa);
+    border: 1px solid var(--azul-umsa);
+}
+
+.btn-blanco:hover {
+    background-color: var(--panel-bg);
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card-hover {
+    border-radius: 16px;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--azul-umsa);
+    font-family: 'Rubik', sans-serif;
+}
+
+/* =========================
+   ELEMENTOS DEL PANEL AZUL
+   ========================= */
+
+/* Tarjetas de estadísticas */
+.stat-card {
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 20px;
+    border-left: 4px solid var(--azul-umsa);
+}
+
+.stat-card .stat-number {
+    color: var(--azul-umsa);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stat-card .stat-label {
+    color: #5a6b7c;
+    font-size: 0.9rem;
+}
+
+/* Badges o etiquetas */
+.badge-azul {
+    background-color: var(--azul-5);
+    color: var(--azul-umsa);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-rojo {
+    background-color: var(--rojo-2);
+    color: var(--rojo-umsa);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-blanco {
+    background-color: var(--blanco);
+    color: var(--azul-umsa);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--azul-umsa);
+}
+
+/* Links */
+a {
+    color: var(--azul-umsa);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: var(--azul-3);
+    text-decoration: underline;
+}
+
+/* Inputs y formularios */
+input, select, textarea {
+    font-family: 'Rubik', sans-serif;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 10px 14px;
+    transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--azul-umsa);
+    box-shadow: 0 0 0 3px rgba(0, 71, 103, 0.2);
+    outline: none;
+}
+
+/* =========================
+   LOGO
+   ========================= */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+    aside {
+        background: var(--blanco) !important;
+        border-right: none;
+        border-bottom: 2px solid #e0e6ed;
+    }
+    
+    .main-content,
+    .panel-container {
+        background: linear-gradient(180deg, #e6f0fa 0%, #cce0f5 100%);
+    }
+    
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 # ============================================
 # TABLA 1: PROGRAMAS DE BECA
