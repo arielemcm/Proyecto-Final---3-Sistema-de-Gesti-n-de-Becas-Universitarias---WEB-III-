@@ -102,13 +102,28 @@ function renderAprobaciones() {
 }
 
 function actualizarKPIs() {
-    const elProgramas = document.getElementById('kpi-programas');
-    const elPostulaciones = document.getElementById('kpi-postulaciones');
-    const elAprobadas = document.getElementById('kpi-aprobadas');
+    // Total programas
+    document.getElementById('kpi-programas').innerText = programas.length;
     
-    if (elProgramas) elProgramas.innerText = programas.length;
-    if (elPostulaciones) elPostulaciones.innerText = postulaciones.length;
-    if (elAprobadas) elAprobadas.innerText = postulaciones.filter(p => p.estado === 'APROBADA').length;
+    // Total postulaciones
+    document.getElementById('kpi-postulaciones').innerText = postulaciones.length;
+    
+    // Becas aprobadas
+    const aprobadas = postulaciones.filter(p => p.estado === 'APROBADA');
+    document.getElementById('kpi-aprobadas').innerText = aprobadas.length;
+    
+    // Inversión total (sumar montos de las aprobadas)
+    let inversionTotal = 0;
+    aprobadas.forEach(p => {
+        // Extraer número del monto (ej: "Bs. 1200/mes" → 1200)
+        if (p.programa_monto) {
+            const montoNumeros = p.programa_monto.match(/\d+/g); // Extrae todos los números
+            if (montoNumeros && montoNumeros.length > 0) {
+                inversionTotal += parseInt(montoNumeros[0]); // Toma el primer número
+            }
+        }
+    });
+    document.getElementById('kpi-inversion').innerText = 'Bs ' + inversionTotal.toLocaleString();
 }
 
 function llenarSelectBecas() {
