@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -14,20 +15,22 @@
 <body class="bg-[#f4f7fb] font-[Rubik]">
 
     <!-- HEADER -->
-<header class="text-white shadow-lg"
-style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header class="text-white shadow-lg" style="background: linear-gradient(90deg, #004767, #003b5c);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="{% static 'img/umsa-logo.png' %}" class="w-10 h-10 object-contain">
+                <div class="logo-container">
+                    <img src="{% static 'img/logo.png' %}" alt="Logo UMSA" class="logo-img">
+                </div>
                 <div>
                     <h1 class="text-xl font-bold">Becas UMSA</h1>
-                    <p class="text-xs text-indigo-200">Panel de Estudiante</p>
+                    <p class="text-xs text-blue-200">Panel de Estudiante</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
                 <span class="text-sm bg-white/20 px-3 py-1.5 rounded-full">
                     <i class="fas fa-user-graduate mr-1"></i> {{ user.username }}
                 </span>
-                <a href="/logout/" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition">
+                <a href="/logout/" class="btn-rojo px-4 py-2 rounded-xl text-sm font-medium transition">
                     <i class="fas fa-sign-out-alt mr-1"></i> Salir
                 </a>
             </div>
@@ -38,7 +41,7 @@ style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="
         
         <!-- BIENVENIDA -->
         <div class="bg-white rounded-2xl shadow p-6 mb-6">
-            <h2 class="text-2xl font-bold text-slate-800">
+            <h2 class="text-2xl font-bold" style="color: var(--azul-umsa);">
                 <i class="fas fa-hand-sparkles text-amber-500 mr-2"></i>¡Bienvenido, {{ user.username }}!
             </h2>
             <p class="text-slate-500 mt-2">Explora los programas de becas disponibles y consulta el estado de tus postulaciones.</p>
@@ -48,22 +51,22 @@ style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="
             
             <!-- PROGRAMAS DISPONIBLES -->
             <div class="bg-white rounded-2xl shadow p-6">
-                <h3 class="text-lg font-bold text-slate-800 mb-4">
+                <h3 class="text-lg font-bold" style="color: var(--azul-umsa);">
                     <i class="fas fa-landmark text-emerald-600 mr-2"></i>Programas de Becas Disponibles
                 </h3>
-                <div id="listaProgramasEstudiante" class="space-y-3">
+                <div id="listaProgramasEstudiante" class="space-y-3 mt-4">
                     <p class="text-slate-400 text-center">Cargando programas...</p>
                 </div>
             </div>
 
             <!-- CONSULTAR MI ESTADO -->
             <div class="bg-white rounded-2xl shadow p-6">
-                <h3 class="text-lg font-bold text-slate-800 mb-4">
+                <h3 class="text-lg font-bold" style="color: var(--azul-umsa);">
                     <i class="fas fa-search text-amber-600 mr-2"></i>Consultar Estado de Postulación
                 </h3>
                 <div class="flex gap-3 mb-4">
                     <input type="text" id="buscarCiEstudiante" placeholder="Ingresa tu CI o RU" class="border p-2.5 rounded-lg w-full">
-                    <button onclick="consultarMiEstado()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm hover:bg-indigo-700 transition">
+                    <button onclick="consultarMiEstado()" class="btn-azul px-4 py-2 rounded-xl text-sm">
                         <i class="fas fa-search"></i> Buscar
                     </button>
                 </div>
@@ -74,23 +77,23 @@ style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="
 
         <!-- INFORMACIÓN -->
         <div class="bg-white rounded-2xl shadow p-6 mt-6">
-            <h3 class="text-lg font-bold text-slate-800 mb-4">
+            <h3 class="text-lg font-bold" style="color: var(--azul-umsa);">
                 <i class="fas fa-info-circle text-blue-600 mr-2"></i>¿Cómo postular a una beca?
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div class="text-center p-4 bg-slate-50 rounded-xl">
                     <span class="text-3xl">1️⃣</span>
-                    <h4 class="font-bold mt-2">Acércate a la oficina</h4>
+                    <h4 class="font-bold mt-2" style="color: var(--azul-umsa);">Acércate a la oficina</h4>
                     <p class="text-sm text-slate-500">Oficina de Bienestar Estudiantil, Monoblock Central</p>
                 </div>
                 <div class="text-center p-4 bg-slate-50 rounded-xl">
                     <span class="text-3xl">2️⃣</span>
-                    <h4 class="font-bold mt-2">Presenta tus documentos</h4>
+                    <h4 class="font-bold mt-2" style="color: var(--azul-umsa);">Presenta tus documentos</h4>
                     <p class="text-sm text-slate-500">CI, Registro Universitario, Kardex, formulario</p>
                 </div>
                 <div class="text-center p-4 bg-slate-50 rounded-xl">
                     <span class="text-3xl">3️⃣</span>
-                    <h4 class="font-bold mt-2">Espera la evaluación</h4>
+                    <h4 class="font-bold mt-2" style="color: var(--azul-umsa);">Espera la evaluación</h4>
                     <p class="text-sm text-slate-500">El comité evaluará tu solicitud y te notificará</p>
                 </div>
             </div>
@@ -108,7 +111,7 @@ style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="
                 cont.innerHTML = data.map(p => `
                     <div class="p-3 bg-slate-50 rounded-xl border flex justify-between items-center">
                         <div>
-                            <span class="font-semibold">${p.tipo_display || p.nombre}</span>
+                            <span class="font-semibold" style="color: var(--azul-umsa);">${p.tipo_display || p.nombre}</span>
                             <p class="text-xs text-slate-500">${p.monto} · ${p.requisito}</p>
                         </div>
                         <span class="text-xs px-2 py-1 rounded-full ${p.activo ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">${p.activo ? 'Activo' : 'Inactivo'}</span>
@@ -131,7 +134,7 @@ style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="
             
             if (Array.isArray(data)) {
                 div.innerHTML = `
-                    <h4 class="font-bold text-slate-700 mb-2">📌 Resultados</h4>
+                    <h4 class="font-bold mb-2" style="color: var(--azul-umsa);">📌 Resultados</h4>
                     ${data.map(p => `
                         <div class="flex justify-between border-b py-2">
                             <span>${p.programa_nombre || 'Sin programa'}</span>

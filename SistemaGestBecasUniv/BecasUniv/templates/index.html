@@ -16,49 +16,53 @@
 <body class="bg-slate-100 font-sans flex h-screen overflow-hidden antialiased">
 
     <!-- SIDEBAR -->
-<aside class="w-80 text-white flex flex-col justify-between shrink-0 shadow-2xl z-10"
-style="background: linear-gradient(180deg,#004767,#003b5c);">        <div>
-            <div class="flex items-center gap-3 px-5 py-6 border-b border-slate-700/60">
-                <div ><img src="{% static 'img/logo.png' %}" class="w-10 h-10"></div>
+    <aside class="w-80 flex flex-col justify-between shrink-0 shadow-2xl z-10">
+        <div>
+            <div class="flex items-center gap-3 px-5 py-6 border-b border-slate-200">
+                <div class="logo-container">
+                    <img src="{% static 'img/logo.png' %}" alt="Logo UMSA" class="logo-img">
+                </div>
                 <div>
                     <h1 class="text-xl font-extrabold tracking-tight">Becas UMSA</h1>
-                    <p class="text-xs text-slate-400 font-medium">Gestion de becas · 2026</p>
+                    <p class="text-xs font-medium" style="color: var(--azul-3);">Gestión de becas · 2026</p>
                 </div>
             </div>
             <nav class="mt-6 px-3 space-y-1.5">
-                <button onclick="mostrarModulo('mod-inicio')" class="nav-btn w-full flex items-center gap-3 text-slate-300 hover:bg-slate-800/80 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
-                    <i class="fas fa-tachometer-alt w-5 text-indigo-300"></i><span>📊 Panel / Dashboard</span>
+                <button onclick="mostrarModulo('mod-inicio')" class="nav-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all">
+                    <i class="fas fa-tachometer-alt w-5"></i><span>📊 Panel / Dashboard</span>
                 </button>
-                <button onclick="mostrarModulo('mod-programas')" class="nav-btn w-full flex items-center gap-3 text-slate-300 hover:bg-slate-800/80 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium">
-                    <i class="fas fa-landmark w-5 text-emerald-300"></i><span>1. Programas de becas</span>
+                <button onclick="mostrarModulo('mod-programas')" class="nav-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium">
+                    <i class="fas fa-landmark w-5"></i><span>1. Programas de becas</span>
                 </button>
-                <button onclick="mostrarModulo('mod-postulaciones')" class="nav-btn w-full flex items-center gap-3 text-slate-300 hover:bg-slate-800/80 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium">
-                    <i class="fas fa-file-alt w-5 text-sky-300"></i><span>2. Gestionar postulaciones</span>
+                <button onclick="mostrarModulo('mod-postulaciones')" class="nav-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium">
+                    <i class="fas fa-file-alt w-5"></i><span>2. Gestionar postulaciones</span>
                 </button>
-                <button onclick="mostrarModulo('mod-estado')" class="nav-btn w-full flex items-center gap-3 text-slate-300 hover:bg-slate-800/80 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium">
-                    <i class="fas fa-magnifying-glass w-5 text-amber-300"></i><span>3. Consultar estados</span>
+                <button onclick="mostrarModulo('mod-estado')" class="nav-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium">
+                    <i class="fas fa-magnifying-glass w-5"></i><span>3. Consultar estados</span>
                 </button>
-                <button onclick="mostrarModulo('mod-aprobaciones')" class="nav-btn w-full flex items-center gap-3 text-slate-300 hover:bg-slate-800/80 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium">
-                    <i class="fas fa-gavel w-5 text-rose-300"></i><span>4. Dictamen (Aprobar/Rechazar)</span>
+                <button onclick="mostrarModulo('mod-aprobaciones')" class="nav-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium">
+                    <i class="fas fa-gavel w-5"></i><span>4. Dictamen (Aprobar/Rechazar)</span>
                 </button>
-                <button onclick="mostrarModulo('mod-consultas')" class="nav-btn w-full flex items-center gap-3 text-slate-300 hover:bg-slate-800/80 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium">
-                    <i class="fas fa-chart-simple w-5 text-purple-300"></i><span>5. Consultas & reportes</span>
+                <button onclick="mostrarModulo('mod-consultas')" class="nav-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium">
+                    <i class="fas fa-chart-simple w-5"></i><span>5. Consultas & reportes</span>
                 </button>
             </nav>
         </div>
-        <div class="text-center text-slate-500 text-xs border-t border-slate-800 py-4 px-3">
-            <i class="fas fa-shield-heart mr-1"></i> Comité de Becas UMSA
+        <div class="text-center text-slate-400 text-xs border-t border-slate-200 py-4 px-3">
+            <i class="fas fa-shield-heart mr-1" style="color: var(--azul-umsa);"></i> Comité de Becas UMSA
         </div>
     </aside>
 
     <!-- MAIN CONTENT -->
     <main class="flex-1 flex flex-col overflow-y-auto bg-slate-50">
         <header class="bg-white/90 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-20 h-16 flex items-center justify-between px-7 shadow-sm">
-            <h2 id="titulo-modulo" class="text-xl font-bold text-slate-800 flex items-center gap-2"><i class="fas fa-chalkboard-user text-indigo-600"></i>Panel de control</h2>
+            <h2 id="titulo-modulo" class="text-xl font-bold flex items-center gap-2" style="color: var(--azul-umsa);">
+                <i class="fas fa-chalkboard-user" style="color: var(--azul-umsa);"></i>Panel de control
+            </h2>
             <div class="flex items-center gap-4">
-                <span class="text-sm text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full">
-                    <i class="fas fa-user-check mr-1 text-emerald-600"></i> 
-                    Rol: <strong class="text-slate-800">
+                <span class="text-sm bg-slate-100 px-3 py-1.5 rounded-full" style="color: var(--azul-umsa);">
+                    <i class="fas fa-user-check mr-1" style="color: var(--azul-umsa);"></i> 
+                    Rol: <strong style="color: var(--azul-1);">
                         {% if user.is_superuser %}
                             Administrador
                         {% elif user.is_staff %}
@@ -68,10 +72,10 @@ style="background: linear-gradient(180deg,#004767,#003b5c);">        <div>
                         {% endif %}
                     </strong>
                 </span>
-                <a href="/logout/" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition">
+                <a href="/logout/" class="btn-rojo px-4 py-2 rounded-xl text-sm font-medium transition">
                     <i class="fas fa-sign-out-alt mr-1"></i> Salir
                 </a>
-                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-700 to-indigo-900 flex items-center justify-center font-bold text-white shadow-md">AD</div>
+                <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-white shadow-md" style="background: var(--azul-umsa);">AD</div>
             </div>
         </header>
 
@@ -80,16 +84,49 @@ style="background: linear-gradient(180deg,#004767,#003b5c);">        <div>
             <!-- MÓDULO DASHBOARD -->
             <section id="mod-inicio" class="modulo-contenido space-y-7">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-gradient-to-br from-sky-600 to-indigo-600 rounded-2xl shadow-lg p-5 text-white card-hover"><div class="flex justify-between"><div><p class="text-sky-100 text-xs font-semibold uppercase tracking-wider">Programas activos</p><p class="text-4xl font-extrabold mt-2" id="kpi-programas">0</p></div><i class="fas fa-university text-4xl opacity-60"></i></div></div>
-                    <div class="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl shadow-lg p-5 text-white card-hover"><div class="flex justify-between"><div><p class="text-emerald-100 text-xs font-semibold">Postulaciones totales</p><p class="text-4xl font-extrabold mt-2" id="kpi-postulaciones">0</p></div><i class="fas fa-users-viewfinder text-4xl opacity-60"></i></div></div>
-                    <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl shadow-lg p-5 text-white card-hover"><div class="flex justify-between"><div><p class="text-amber-100 text-xs font-semibold">Becas aprobadas</p><p class="text-4xl font-extrabold mt-2" id="kpi-aprobadas">0</p></div><i class="fas fa-check-double text-4xl opacity-60"></i></div></div>
-                    <div class="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl shadow-lg p-5 text-white card-hover"><div class="flex justify-between"><div><p class="text-purple-100 text-xs font-semibold">Inversión total</p><p class="text-4xl font-extrabold mt-2" id="kpi-inversion">Bs 0</p></div><i class="fas fa-chart-line text-4xl opacity-60"></i></div></div>
+                    <div class="rounded-2xl shadow-lg p-5 text-white card-hover" style="background: linear-gradient(135deg, var(--azul-umsa), var(--azul-1));">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-white/80 text-xs font-semibold uppercase tracking-wider">Programas activos</p>
+                                <p class="text-4xl font-extrabold mt-2" id="kpi-programas">0</p>
+                            </div>
+                            <i class="fas fa-university text-4xl opacity-60"></i>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl shadow-lg p-5 text-white card-hover" style="background: linear-gradient(135deg, var(--azul-2), var(--azul-3));">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-white/80 text-xs font-semibold">Postulaciones totales</p>
+                                <p class="text-4xl font-extrabold mt-2" id="kpi-postulaciones">0</p>
+                            </div>
+                            <i class="fas fa-users-viewfinder text-4xl opacity-60"></i>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl shadow-lg p-5 text-white card-hover" style="background: linear-gradient(135deg, var(--rojo-umsa), var(--rojo-1));">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-white/80 text-xs font-semibold">Becas aprobadas</p>
+                                <p class="text-4xl font-extrabold mt-2" id="kpi-aprobadas">0</p>
+                            </div>
+                            <i class="fas fa-check-double text-4xl opacity-60"></i>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl shadow-lg p-5 text-white card-hover" style="background: linear-gradient(135deg, var(--azul-umsa), var(--negro));">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-white/80 text-xs font-semibold">Inversión total</p>
+                                <p class="text-4xl font-extrabold mt-2" id="kpi-inversion">Bs 0</p>
+                            </div>
+                            <i class="fas fa-chart-line text-4xl opacity-60"></i>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- MÓDULO 1: PROGRAMAS -->
             <section id="mod-programas" class="modulo-contenido hidden space-y-6">
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="text-lg font-bold">Registrar nuevo programa</h3>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="text-lg font-bold" style="color: var(--azul-umsa);">Registrar nuevo programa</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                         <input type="text" id="nombrePrograma" placeholder="Nombre del programa" class="border p-2.5 rounded-lg text-sm">
                         <select id="tipoPrograma" class="border p-2.5 rounded-lg text-sm bg-white">
@@ -104,14 +141,18 @@ style="background: linear-gradient(180deg,#004767,#003b5c);">        <div>
                         <input type="text" id="montoPrograma" placeholder="Monto (ej: Bs. 500/mes)" class="border p-2.5 rounded-lg text-sm">
                         <input type="text" id="requisitoPrograma" placeholder="Requisito principal" class="border p-2.5 rounded-lg text-sm">
                     </div>
-                    <button onclick="agregarPrograma()" class="mt-4 bg-slate-800 text-white px-5 py-2 rounded-xl text-sm">Registrar</button>
+                    <button onclick="agregarPrograma()" class="btn-azul px-5 py-2 rounded-xl text-sm mt-4">Registrar</button>
                 </div>
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="font-bold mb-3">Catalogo de becas</h3><div id="listaProgramas" class="space-y-3"></div></div>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="font-bold mb-3" style="color: var(--azul-umsa);">Catálogo de becas</h3>
+                    <div id="listaProgramas" class="space-y-3"></div>
+                </div>
             </section>
 
             <!-- MODULO 2: POSTULACIONES -->
             <section id="mod-postulaciones" class="modulo-contenido hidden space-y-6">
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="text-lg font-bold">Nueva postulacion</h3>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="text-lg font-bold" style="color: var(--azul-umsa);">Nueva postulación</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
                         <input type="text" id="ciEstudiante" placeholder="Carnet de Identidad (CI)" class="border p-2.5 rounded-lg">
                         <input type="text" id="registroEstudiante" placeholder="Registro Universitario" class="border p-2.5 rounded-lg">
@@ -120,17 +161,21 @@ style="background: linear-gradient(180deg,#004767,#003b5c);">        <div>
                             <option value="">Seleccionar beca...</option>
                         </select>
                     </div>
-                    <button onclick="registrarPostulacion()" class="mt-4 bg-indigo-600 text-white px-6 py-2 rounded-xl text-sm">Registrar postulación</button>
+                    <button onclick="registrarPostulacion()" class="btn-azul px-6 py-2 rounded-xl text-sm mt-4">Registrar postulación</button>
                 </div>
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="font-bold">Historial</h3><div id="listaPostulaciones" class="space-y-2 max-h-96 overflow-y-auto mt-3"></div></div>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="font-bold" style="color: var(--azul-umsa);">Historial</h3>
+                    <div id="listaPostulaciones" class="space-y-2 max-h-96 overflow-y-auto mt-3"></div>
+                </div>
             </section>
 
             <!-- MODULO 3: CONSULTAR ESTADO -->
             <section id="mod-estado" class="modulo-contenido hidden space-y-6">
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="text-lg font-bold">Seguimiento de tramite</h3>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="text-lg font-bold" style="color: var(--azul-umsa);">Seguimiento de trámite</h3>
                     <div class="flex gap-3 max-w-md mt-3">
                         <input type="text" id="buscarEstadoId" placeholder="CI/RU del estudiante" class="border p-2.5 rounded-lg w-full">
-                        <button onclick="consultarEstado()" class="bg-slate-800 text-white px-5 rounded-xl text-sm">Buscar</button>
+                        <button onclick="consultarEstado()" class="btn-azul px-5 rounded-xl text-sm">Buscar</button>
                     </div>
                     <div id="resultadoEstado" class="mt-5 p-4 bg-slate-50 rounded-xl border hidden"></div>
                 </div>
@@ -138,14 +183,18 @@ style="background: linear-gradient(180deg,#004767,#003b5c);">        <div>
 
             <!-- MODULO 4: APROBACIONES -->
             <section id="mod-aprobaciones" class="modulo-contenido hidden space-y-6">
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="font-bold">Dictamen · Postulaciones pendientes</h3><div id="tablaAprobaciones"></div></div>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="font-bold" style="color: var(--azul-umsa);">Dictamen · Postulaciones pendientes</h3>
+                    <div id="tablaAprobaciones"></div>
+                </div>
             </section>
 
             <!-- MODULO 5: CONSULTAS -->
             <section id="mod-consultas" class="modulo-contenido hidden space-y-6">
-                <div class="bg-white rounded-2xl shadow p-6"><h3 class="font-bold text-lg">Reportes</h3>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="font-bold text-lg" style="color: var(--azul-umsa);">Reportes</h3>
                     <div class="flex gap-3 mt-5">
-                        <button onclick="generarReporte()" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm">Generar Estadisticas</button>
+                        <button onclick="generarReporte()" class="btn-azul px-5 py-2 rounded-xl text-sm">Generar Estadísticas</button>
                     </div>
                     <div class="mt-7"><canvas id="dynamicChart" height="200"></canvas><div id="resumenEstadistico" class="mt-4 text-sm bg-slate-100 p-4 rounded-xl"></div></div>
                 </div>
