@@ -11,6 +11,10 @@
     --azul-1: #003b5c;
     --azul-2: #005b8c;
     --azul-3: #006fa6;
+    
+    /* tonos para el panel de control */
+    --panel-bg: #e8f0fe;  /* Fondo azul claro */
+    --panel-hover: #d4e2fc;
 }
 
 /* Fuente global */
@@ -34,16 +38,83 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--azul-umsa); border-radius: 10px; }
 
 /* =========================
-   SIDEBAR UMSA
+   SIDEBAR UMSA - MENÚ BAR BLANCO
    ========================= */
 
 aside {
-    background: linear-gradient(180deg, var(--azul-umsa), var(--azul-1));
+    background: var(--blanco) !important;  /* Fondo blanco */
+    border-right: 2px solid #e0e6ed;       /* Borde sutil */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
 }
 
-/* Botones hover más institucional */
+/* Estilo para el título del sidebar en azul */
+aside h2, 
+aside .sidebar-title,
+aside .logo-text {
+    color: var(--azul-umsa) !important;
+}
+
+/* Botones del sidebar en azul sobre fondo blanco */
+.nav-btn {
+    color: var(--azul-umsa) !important;
+    background-color: transparent !important;
+    border-radius: 10px;
+    margin: 4px 8px;
+    padding: 10px 16px;
+}
+
 .nav-btn:hover {
-    background-color: var(--azul-2) !important;
+    background-color: var(--panel-bg) !important;
+    color: var(--azul-1) !important;
+}
+
+.nav-btn.active {
+    background-color: var(--azul-umsa) !important;
+    color: var(--blanco) !important;
+}
+
+/* Iconos del sidebar en azul */
+aside i, 
+aside .nav-icon {
+    color: var(--azul-umsa);
+}
+
+/* =========================
+   PANEL DE CONTROL - FONDO AZUL
+   ========================= */
+
+/* Contenedor principal del panel */
+.main-content,
+.panel-container,
+.content-wrapper {
+    background: linear-gradient(135deg, #e8f0fe 0%, #d4e2fc 100%);
+    min-height: 100vh;
+}
+
+/* Tarjetas del panel con fondo blanco para contraste */
+.card {
+    background: var(--blanco);
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 71, 103, 0.08);
+}
+
+.card-header {
+    background: var(--blanco);
+    border-bottom: 2px solid var(--panel-bg);
+    border-radius: 16px 16px 0 0 !important;
+}
+
+/* Tablas con fondo blanco sobre panel azul */
+.table {
+    background: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: var(--azul-umsa);
+    color: var(--blanco);
 }
 
 /* =========================
@@ -68,6 +139,17 @@ button:hover {
     background-color: #c10d14;
 }
 
+/* Botones azules para el panel */
+.btn-azul {
+    background-color: var(--azul-umsa);
+    color: white;
+}
+
+.btn-azul:hover {
+    background-color: var(--azul-1);
+    color: white;
+}
+
 /* =========================
    CARDS
    ========================= */
@@ -79,4 +161,44 @@ button:hover {
 /* encabezados */
 h1, h2, h3 {
     color: var(--azul-umsa);
+}
+
+/* =========================
+   ELEMENTOS DEL PANEL AZUL
+   ========================= */
+
+/* Estadísticas en el panel */
+.stat-card {
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 20px;
+    border-left: 4px solid var(--azul-umsa);
+}
+
+.stat-card .stat-number {
+    color: var(--azul-umsa);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stat-card .stat-label {
+    color: #5a6b7c;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+    aside {
+        background: var(--blanco) !important;
+        border-right: none;
+        border-bottom: 2px solid #e0e6ed;
+    }
+    
+    .main-content,
+    .panel-container {
+        background: linear-gradient(180deg, #e8f0fe 0%, #d4e2fc 100%);
+    }
 }
