@@ -112,14 +112,14 @@ function actualizarKPIs() {
     const aprobadas = postulaciones.filter(p => p.estado === 'APROBADA');
     document.getElementById('kpi-aprobadas').innerText = aprobadas.length;
     
-    // Inversión total (sumar montos de las aprobadas)
+    // Inversion total (sumar montos de las aprobadas)
     let inversionTotal = 0;
     aprobadas.forEach(p => {
-        // Extraer número del monto (ej: "Bs. 1200/mes" → 1200)
+        //Extraer numero del monto (ej: "Bs. 1200/mes" --->1200)
         if (p.programa_monto) {
-            const montoNumeros = p.programa_monto.match(/\d+/g); // Extrae todos los números
+            const montoNumeros = p.programa_monto.match(/\d+/g); //Extrae numeros
             if (montoNumeros && montoNumeros.length > 0) {
-                inversionTotal += parseInt(montoNumeros[0]); // Toma el primer número
+                inversionTotal += parseInt(montoNumeros[0]); //Toma el primer numero
             }
         }
     });
