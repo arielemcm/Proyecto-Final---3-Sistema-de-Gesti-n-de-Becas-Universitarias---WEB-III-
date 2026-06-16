@@ -24,7 +24,7 @@ from BecasUniv.views import (
     login_view, index_view, logout_view,
     ProgramaBecaViewSet, EstudianteViewSet, PostulacionViewSet,
     consulta_estado_estudiante, consulta_estadisticas,
-    consulta_por_estado, consulta_por_programa
+    consulta_por_estado, consulta_por_programa, estudiante_view
 )
 
 # Router para API REST (CRUD automático)
@@ -40,6 +40,7 @@ urlpatterns = [
     path('', login_view, name='login'),           # Login (página principal)
     path('index/', index_view, name='index'),     # Dashboard (protegido)
     path('logout/', logout_view, name='logout'),  # Cerrar sesión
+    path('estudiante/', estudiante_view, name='estudiante'),
     
     # ============================================
     # ADMIN DJANGO

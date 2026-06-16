@@ -13,13 +13,7 @@ from django.db.models import Q
 # ============================================
 # VISTAS DE AUTENTICACIÓN
 # ============================================
-
 def login_view(request):
-    """
-    Vista de inicio de sesión
-    Si el usuario ya está autenticado, redirige al index
-    """
-    # Si ya está logueado, redirigir al index
     if request.user.is_authenticated:
         return redirect('index')
     
@@ -30,12 +24,15 @@ def login_view(request):
         
         if user is not None:
             login(request, user)
-            return redirect('index')  # Redirige al index después de login
+            # Redirigir según rol
+            if user.is_superuser or user.is_staff:
+                return redirect('index')      # Admin y Revisor → Dashboard
+            else:
+                return redirect('estudiante')  # Estudiante → Panel Estudiante
         else:
             messages.error(request, 'Usuario o contraseña inválidos')
     
     return render(request, 'login.html')
-
 @login_required
 def index_view(request):
     """
@@ -141,3 +138,9 @@ def consulta_por_programa(request, programa_id):
     postulaciones = Postulacion.objects.filter(programa_id=programa_id)
     serializer = PostulacionSerializer(postulaciones, many=True)
     return Response(serializer.data)
+@login_required
+def estudiante_view(request):
+    """
+    Vista para estudiantes: solo ven becas y consultan estado
+    """
+    return render(request, 'estudiante.html')
