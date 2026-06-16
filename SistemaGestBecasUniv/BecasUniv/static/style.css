@@ -1,9 +1,82 @@
-/* Estilos del Sistema de Becas UMSA */
+/* =========================
+   SISTEMA UMSA - NUEVO DISEÑO
+   ========================= */
+
+:root {
+    --rojo-umsa: #e01017;
+    --azul-umsa: #004767;
+    --blanco: #ffffff;
+
+    /* tonos secundarios azul */
+    --azul-1: #003b5c;
+    --azul-2: #005b8c;
+    --azul-3: #006fa6;
+}
+
+/* Fuente global */
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #f4f7fb;
+}
+
+/* Transiciones */
 .transition-all { transition: all 0.2s ease; }
 .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-.card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 22px -10px rgba(0,0,0,0.12); }
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 22px -10px rgba(0,0,0,0.15);
+}
+
+/* Scrollbar institucional */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #eef2f5; border-radius: 10px; }
-::-webkit-scrollbar-thumb { background: #b9c3ce; border-radius: 10px; }
-.modulo-contenido { display: none; }
-.modulo-contenido.block { display: block; }
+::-webkit-scrollbar-track { background: #eef2f5; }
+::-webkit-scrollbar-thumb { background: var(--azul-umsa); border-radius: 10px; }
+
+/* =========================
+   SIDEBAR UMSA
+   ========================= */
+
+aside {
+    background: linear-gradient(180deg, var(--azul-umsa), var(--azul-1));
+}
+
+/* Botones hover más institucional */
+.nav-btn:hover {
+    background-color: var(--azul-2) !important;
+}
+
+/* =========================
+   BOTONES PRINCIPALES
+   ========================= */
+
+button, .btn {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.05);
+}
+
+/* botones rojos UMSA */
+.btn-rojo {
+    background-color: var(--rojo-umsa);
+    color: white;
+}
+
+.btn-rojo:hover {
+    background-color: #c10d14;
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card-hover {
+    border-radius: 16px;
+}
+
+/* encabezados */
+h1, h2, h3 {
+    color: var(--azul-umsa);
+}

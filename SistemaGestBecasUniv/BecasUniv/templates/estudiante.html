@@ -7,14 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-100 font-sans">
+<body class="bg-[#f4f7fb] font-[Rubik]">
 
     <!-- HEADER -->
-    <header class="bg-gradient-to-r from-indigo-700 to-purple-800 text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<header class="text-white shadow-lg"
+style="background: linear-gradient(90deg,#004767,#003b5c);">        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <span class="text-3xl">🎓</span>
+                <img src="{% static 'img/umsa-logo.png' %}" class="w-10 h-10 object-contain">
                 <div>
                     <h1 class="text-xl font-bold">Becas UMSA</h1>
                     <p class="text-xs text-indigo-200">Panel de Estudiante</p>
