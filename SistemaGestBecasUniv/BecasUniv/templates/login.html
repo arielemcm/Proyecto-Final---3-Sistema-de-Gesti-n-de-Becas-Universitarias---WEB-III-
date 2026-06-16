@@ -4,46 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión | Sistema de Gestión de Becas UMSA</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Iniciar Sesión | Becas UMSA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
 <body>
-    <div class="page-shell">
-        <section class="brand-panel">
-            <div class="brand-panel__content">
-                <div class="brand-icon">🎓</div>
+    <div class="w-full max-w-md px-4">
+        <!-- Logo UMSA -->
+        <div class="text-center mb-8">
+            <div class="text-5xl mb-3">🎓</div>
+            <h1 class="text-2xl font-bold text-white">Becas Universitarias</h1>
+            <p class="text-slate-300 text-sm">Sistema de gestion</p>
+        </div>
+        
+        <!-- Tarjeta de Login -->
+        <div class="login-card p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center text-white text-xl">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800">Iniciar Sesión</h2>
+            </div>
+            
+            {% if messages %}
+                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-4 text-sm">
+                    {% for message in messages %}
+                        <p><i class="fas fa-exclamation-circle mr-1"></i> {{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
                 <div>
-                    <h1>Sistema de Gestión de Becas UMSA</h1>
-                    <p>Gestión integral de postulaciones · Comité de Becas 2026</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="login-panel">
-            <div class="login-card">
-                <div class="login-card__header">
-                    <div class="login-card__icon">🔐</div>
-                    <h2>Iniciar Sesión</h2>
-                </div>
-                {% if messages %}
-                    <div class="login-alert">
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Usuario</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" name="username" class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition" placeholder="admin" required>
                     </div>
-                {% endif %}
-                <form method="post" class="login-form">
-                    {% csrf_token %}
-                    <label for="username">Usuario</label>
-                    <input id="username" name="username" type="text" placeholder="Usuario" required>
-
-                    <label for="password">Contraseña</label>
-                    <input id="password" name="password" type="password" placeholder="Contraseña" required>
-
-                    <button type="submit">Ingresar</button>
-                </form>
-            </div>
-        </section>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Contraseña</label>
+                    <div class="relative">
+                        <i class="fas fa-key absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="password" name="password" class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition" placeholder="••••••••" required>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-800 transition shadow-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Ingresar
+                </button>
+            </form>
+            
+            <p class="text-center text-xs text-slate-400 mt-6">
+                Universidad Grupo 2 - WEB III
+            </p>
+        </div>
     </div>
 </body>
 </html>

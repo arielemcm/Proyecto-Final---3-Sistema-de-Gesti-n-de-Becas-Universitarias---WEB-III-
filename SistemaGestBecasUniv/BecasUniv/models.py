@@ -8,12 +8,12 @@ class ProgramaBeca(models.Model):
     """Catalogo de programas de becas disponibles"""
 
     TIPOS = [
-        ('DOCENCIA', 'Auxiliar Docencia'),
-        ('INVESTIGACION', 'Auxiliar Investigación'),
-        ('COMEDOR1', 'Beca Comedor Cat.1'),
-        ('COMEDOR2', 'Beca Comedor Cat.2'),
-        ('TRANSPORTE', 'Beca Transporte'),
-        ('DEPORTIVA', 'Beca Deportiva'),
+        ('DOCENCIA', '🎓 Auxiliar Docencia'),
+        ('INVESTIGACION', '🔬 Auxiliar Investigación'),
+        ('COMEDOR1', '🍽️ Beca Comedor Cat.1'),
+        ('COMEDOR2', '🍽️ Beca Comedor Cat.2'),
+        ('TRANSPORTE', '🚌 Beca Transporte'),
+        ('DEPORTIVA', '⚽ Beca Deportiva'),
     ]
     
     nombre = models.CharField(max_length=200, verbose_name='Nombre del programa')
@@ -33,12 +33,13 @@ class ProgramaBeca(models.Model):
         return f"{self.get_tipo_display()} - {self.nombre}"
 
 # ============================================
-# TABLA 2: ESTUDIANTES
+# TABLA 2: ESTUDIANTES (CON CI Y REGISTRO)
 # ============================================
 class Estudiante(models.Model):
     """Datos de estudiantes postulantes"""
     
-    estudiante_id = models.CharField(max_length=20, unique=True, verbose_name='ID/Carnet Estudiante')
+    ci = models.CharField(max_length=15, unique=True, verbose_name='Carnet de Identidad')  # ← NUEVO
+    registro_universitario = models.CharField(max_length=20, unique=True, verbose_name='Registro Universitario')  # ← NUEVO
     nombre_completo = models.CharField(max_length=200, verbose_name='Nombre completo')
     carrera = models.CharField(max_length=100, default='Informática', verbose_name='Carrera')
     fecha_registro = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de registro')
@@ -49,7 +50,7 @@ class Estudiante(models.Model):
         verbose_name_plural = 'Estudiantes'
     
     def __str__(self):
-        return f"{self.nombre_completo} ({self.estudiante_id})"
+        return f"{self.nombre_completo} (CI: {self.ci})"  # ← CAMBIADO
 
 # ============================================
 # TABLA 3: POSTULACIONES
@@ -58,9 +59,9 @@ class Postulacion(models.Model):
     """Postulaciones de estudiantes a programas de beca"""
     
     ESTADOS = [
-        ('PENDIENTE', 'Pendiente'),
-        ('APROBADA', 'Aprobada'),
-        ('RECHAZADA', 'Rechazada'),
+        ('PENDIENTE', '⏳ Pendiente'),
+        ('APROBADA', '✅ Aprobada'),
+        ('RECHAZADA', '❌ Rechazada'),
     ]
     
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, related_name='postulaciones')

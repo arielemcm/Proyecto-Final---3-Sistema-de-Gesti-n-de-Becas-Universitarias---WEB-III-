@@ -60,7 +60,7 @@ ROOT_URLCONF = 'SistemaGestBecasUniv.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'SistemaGestBecasUniv' / 'BecasUniv' / 'templates'],
+        'DIRS': [BASE_DIR / 'BecasUniv' / 'templates' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,13 +121,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
+LOGIN_URL = 'login'  # URL para redirigir cuando no está autenticado
+LOGIN_REDIRECT_URL = 'index'  # URL después de login exitoso
+LOGOUT_REDIRECT_URL = 'login'  # URL después de logout
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'SistemaGestBecasUniv' / 'BecasUniv' / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'BecasUniv' / 'static']
 
 
 # ============================================
